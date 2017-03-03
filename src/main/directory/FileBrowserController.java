@@ -2,11 +2,11 @@ package main.directory;
 
 import java.awt.event.*;
 
-public class SampleBrowserController implements MouseListener, MouseMotionListener, ActionListener {
+public class FileBrowserController implements MouseListener, MouseMotionListener, ActionListener {
 
-	private SampleBrowser parent;
+	private FileBrowser parent;
 	
-	SampleBrowserController(SampleBrowser parent) {
+	FileBrowserController(FileBrowser parent) {
 		this.parent = parent;
 	}
 
@@ -15,6 +15,11 @@ public class SampleBrowserController implements MouseListener, MouseMotionListen
 	public void mouseExited(MouseEvent e){}
 	public void mousePressed(MouseEvent e){}
 	public void mouseClicked(MouseEvent e){
+		for(Visible visible: parent.getVisibleFiles()) {
+			if(visible.isMouseInside(e.getX(), e.getY())) {
+				visible.handleClick();
+			}
+		}
 	}
 	
 	public void mouseMoved(MouseEvent e) {

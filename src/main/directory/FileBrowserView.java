@@ -2,14 +2,14 @@ package main.directory;
 import javax.swing.*;
 import java.awt.*;
 
-public class SampleBrowserView extends JPanel{
+public class FileBrowserView extends JPanel{
 
 	private int cornerX = 10;
 	private int cornerY = 10;
 	private static final long serialVersionUID = 460120758786887240L;
-	private SampleBrowser parent;
+	private FileBrowser parent;
 
-	SampleBrowserView(SampleBrowser parent) {
+	FileBrowserView(FileBrowser parent) {
 		this.parent = parent;
 	}
 	

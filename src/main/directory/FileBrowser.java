@@ -13,25 +13,24 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import main.MultiWindow;
-import main.TabbedFrame;
 
-public class SampleBrowser extends JPanel  {
+public class FileBrowser extends JPanel  {
 	
 	public static final String samplesDir = "C:\\Samples";
 
 	private static final long serialVersionUID = -7203847788002161520L;
-	private TabbedFrame parent;
-	private SampleBrowserView view;
-	private SampleBrowserController controller;
+	private MultiWindow parent;
+	private FileBrowserView view;
+	private FileBrowserController controller;
 	private JToolBar navigationBar;
-	private Visible tree = new Visible(new File(samplesDir), 0);
+	private Visible tree;
 	
-	public SampleBrowser(TabbedFrame parent) {
+	public FileBrowser(MultiWindow parent) {
 		super(new BorderLayout());
 		this.parent = parent;
-	    view = new SampleBrowserView(this);
+	    view = new FileBrowserView(this);
 	    view.setBackground(Color.black);
-	    controller = new SampleBrowserController(this);
+	    controller = new FileBrowserController(this);
 	    navigationBar = new JToolBar();
 	    add(createNavigationBar(), BorderLayout.PAGE_START);
 	    view.addMouseListener(controller);
@@ -40,6 +39,7 @@ public class SampleBrowser extends JPanel  {
 	    JScrollPane scrollPane = new JScrollPane(view);
 	    scrollPane.setSize(1500, 840);
 	    add(scrollPane, BorderLayout.CENTER);
+	    tree = new Visible(this, new File(samplesDir), 0);
 	}
 	
 	public void addNavigationButton(String buttonText) {
@@ -72,6 +72,10 @@ public class SampleBrowser extends JPanel  {
 	
 	public void updateView() {
 		view.repaint();
+	}
+	
+	public FileBrowserView getView() {
+		return view;
 	}
 
 }

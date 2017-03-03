@@ -8,16 +8,27 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
-import main.directory.SampleBrowser;
+import main.directory.FileBrowser;
+import main.editor.ModuleEditor;
 
 public class MultiWindow extends WindowAdapter {
 
-	public TabbedFrame tabbedFrame;
+	public JFrame fileBrowser;
+	public JFrame moduleEditor;
 	public JTabbedPane pane;
 	
 	public MultiWindow() {
-		tabbedFrame = new TabbedFrame(this);
-		tabbedFrame.setLocation(100, 100);
-		tabbedFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fileBrowser = new JFrame();
+		fileBrowser.add(new FileBrowser(this));
+		fileBrowser.setLocation(100, 100);
+		fileBrowser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fileBrowser.pack();
+		fileBrowser.setVisible(true);
+		moduleEditor = new JFrame();
+		moduleEditor.add(new ModuleEditor(this));
+		moduleEditor.setLocation(100, 100);
+		moduleEditor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		moduleEditor.pack();
+		moduleEditor.setVisible(true);
 	}
 }
