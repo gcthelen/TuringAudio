@@ -13,17 +13,19 @@ import main.editor.ModuleEditor;
 
 public class MultiWindow extends WindowAdapter {
 
-	public JFrame fileBrowser;
-	public JFrame moduleEditor;
+	public static JFrame fileBrowser;
+	public static JFrame moduleEditor;
 	public JTabbedPane pane;
 	
 	public MultiWindow() {
+		/*
 		fileBrowser = new JFrame();
 		fileBrowser.add(new FileBrowser(this));
 		fileBrowser.setLocation(100, 100);
 		fileBrowser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fileBrowser.pack();
 		fileBrowser.setVisible(true);
+		*/
 		moduleEditor = new JFrame();
 		moduleEditor.add(new ModuleEditor(this));
 		moduleEditor.setLocation(100, 100);
@@ -31,4 +33,5 @@ public class MultiWindow extends WindowAdapter {
 		moduleEditor.pack();
 		moduleEditor.setVisible(true);
 	}
+
 }
